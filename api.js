@@ -17,5 +17,3 @@ const getPokeGen = async () => {
 		console.error("Une erreur s'est produite : ", error);
 	}
 };
-
-const getPokeByName = async () => {};
