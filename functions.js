@@ -22,7 +22,6 @@ const suggestPokemon = (pokemon) => {
 
 const searchPokemon = (search) => {
 	suggestionsContainer.innerHTML = ""; // Supprime les anciennes suggestions qui ne sont plus valides après avoir ajouté des caractères
-
 	if (search) {
 		// Filtre de la liste de tous les pokemon pour ne garder que ceux qui correspondent à ce qu'on tape
 		const filteredData = pokeList.filter((poke) => poke.name.fr.toLowerCase().includes(search));
@@ -35,6 +34,7 @@ const searchPokemon = (search) => {
 				selectPokemon(poke);
 				searchBox.value = poke.name.fr;
 				suggestionsContainer.innerHTML = "";
+				suggestionsContainer.classList.add("hidden");
 			});
 		});
 	}
@@ -83,6 +83,9 @@ const displayPokemon = (pokemon, type) => {
 	// Display name
 	let span = container.querySelector(".name span");
 	span.textContent = pokemon.name.fr;
+	// Display HP bar
+	let fightContainer = document.querySelector(".fight-container");
+	fightContainer.classList.remove("hidden");
 };
 
 const getPokeSprite = (pokemon) => {

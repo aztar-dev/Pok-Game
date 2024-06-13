@@ -1,3 +1,11 @@
+.fight-container.hidden {
+	display: none;
+}
+
+.hidden {
+	display: none;
+}
+
 /* BARRE DE RECHERCHE DE POKEMON */
 
 #searchBox {
@@ -40,22 +48,16 @@
 	border: 1px solid #ccc;
 }
 
-.selected-poke {
-	padding: 1rem;
-	width: 50%;
+.selected {
 	border-right: 1px solid #ccc;
 }
 
-.opponent-poke {
-	padding: 1rem;
-	width: 50%;
-}
-
-.selected-poke,
-.opponent-poke {
+.poke-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 1rem;
+	width: 50%;
 }
 
 .hp-bar {
