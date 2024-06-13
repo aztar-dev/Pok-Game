@@ -27,7 +27,7 @@
 	background-color: #f0f0f0;
 }
 
-.selected-name {
+.name {
 	margin-top: 20px;
 	font-size: 18px;
 	color: #333;
@@ -46,14 +46,31 @@
 	border-right: 1px solid #ccc;
 }
 
-.opponent-container {
+.opponent-poke {
 	padding: 1rem;
 	width: 50%;
 }
 
 .selected-poke,
-.opponent-container {
+.opponent-poke {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.hp-bar {
+	border-radius: 20px;
+	height: 20px;
+	width: 80%;
+	margin-top: 2rem;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	position: relative;
+}
+
+.progress {
+	background-color: red;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
