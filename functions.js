@@ -2,6 +2,38 @@ let selectedPokemon;
 let opponentPokemon;
 let selectedHP;
 let opponentHP;
+let myTurn = true;
+
+// TODO Compléter cette partie et déterminer qui commence
+const whoBegins = () => {
+	let random = Math.random();
+	myTurn = random >= 0.5 ? false : myTurn;
+};
+
+const hideSearchBar = () => {
+	searchBox.value = "";
+	searchBox.classList.add("hidden");
+	suggestionsContainer.innerHTML = "";
+	suggestionsContainer.classList.add("hidden");
+};
+
+const displayTurn = () => {
+	let infosContainer = document.querySelector(".fight-infos");
+	let infosPar = infosContainer.querySelector("p");
+	if (myTurn) {
+		infosPar.textContent = "C'est à votre tour de jouer !";
+	} else {
+		infosPar.textContent = "C'est au tour de votre adversaire !";
+		infosContainer.classList.toggle("opponent-turn");
+	}
+
+	infosContainer.classList.remove("hidden");
+};
+
+const displayMenu = () => {
+	let menu = document.querySelector(".game-menu");
+	menu.classList.remove("hidden");
+};
 
 const isPokeShiny = () => {
 	const random = Math.random();
@@ -9,6 +41,14 @@ const isPokeShiny = () => {
 		return false;
 	} else {
 		return true;
+	}
+};
+
+const getPokeSprite = (pokemon) => {
+	if (isPokeShiny()) {
+		return pokemon.sprites.shiny;
+	} else {
+		return pokemon.sprites.regular;
 	}
 };
 
@@ -30,11 +70,11 @@ const searchPokemon = (search) => {
 			const suggestedPoke = suggestPokemon(poke);
 
 			// Event au clic pour mettre le nom dans la barre de recherche et l'afficher en dessous
-			suggestedPoke.addEventListener("click", function () {
+			suggestedPoke.addEventListener("click", () => {
 				selectPokemon(poke);
-				searchBox.value = poke.name.fr;
-				suggestionsContainer.innerHTML = "";
-				suggestionsContainer.classList.add("hidden");
+				hideSearchBar();
+				displayTurn();
+				displayMenu();
 			});
 		});
 	}
@@ -86,12 +126,4 @@ const displayPokemon = (pokemon, type) => {
 	// Display HP bar
 	let fightContainer = document.querySelector(".fight-container");
 	fightContainer.classList.remove("hidden");
-};
-
-const getPokeSprite = (pokemon) => {
-	if (isPokeShiny()) {
-		return pokemon.sprites.shiny;
-	} else {
-		return pokemon.sprites.regular;
-	}
 };

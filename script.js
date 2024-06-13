@@ -6,6 +6,7 @@ const pokeCards = document.querySelectorAll(".poke-card");
 
 const init = async () => {
 	pokeList = await getPokeList();
+	whoBegins();
 };
 
 init();
