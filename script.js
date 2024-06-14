@@ -1,3 +1,4 @@
+const attackBtn = document.querySelector(".attack-btn");
 let pokeList;
 
 const searchBox = document.getElementById("searchBox");
@@ -19,12 +20,21 @@ searchBox.addEventListener("input", () => {
 	searchPokemon(search);
 });
 
-pokeCards.forEach((card) => {
-	card.addEventListener("click", () => {
-		if (card.classList.contains("selected")) {
-			loseHP(selectedPokemon, 10);
-		} else {
-			loseHP(opponentPokemon, 10);
-		}
-	});
+attackBtn.addEventListener("click", () => {
+	if (myTurn) {
+		loseHP(enemyPokemonStats);
+	} else {
+		loseHP(myPokemonStats);
+	}
+	displayTurn();
 });
+
+// pokeCards.forEach((card) => {
+// 	card.addEventListener("click", () => {
+// 		if (card.classList.contains("selected")) {
+// 			loseHP(selectedPokemon, 10);
+// 		} else {
+// 			loseHP(opponentPokemon, 10);
+// 		}
+// 	});
+// });
